@@ -70,7 +70,6 @@ then, you can see new components in google cluster platform
 
 # result picture
 ![nodes](./picture/node2.jpg)
-![service](./picture/service.jpg)
 
 Use yaml file in project, can using Jupyter and Darknet in conda with linux environment.
 
