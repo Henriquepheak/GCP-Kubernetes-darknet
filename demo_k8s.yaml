@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+spec:
+  containers:
+  - name: demo
+    image: xblaster/tensorflow-jupyter
+    ports:
+    - containerPort: 8888
+---
+kind: Service
+metadata:
+     name: demo-service
+spec:
+     type: LoadBalancer
+     ports:
+     - port: 8888
+       targetPort: 8888
+     selector:
+       service-name: demo

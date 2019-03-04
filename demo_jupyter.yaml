@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: demo-jupyter
+ labels:
+  app: demo-jupyter
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: demo-jupyter
+ template:
+  metadata:
+    labels:
+      app: demo-jupyter
+  spec:
+   containers:
+   - name: demo-notebook
+     image: gcr.io/kubernetes-233002/jupyter
+     ports:
+     - containerPort: 8888
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jupyter-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8888
+    targetPort: 8888
+  selector:
+          app: demo-jupyter
